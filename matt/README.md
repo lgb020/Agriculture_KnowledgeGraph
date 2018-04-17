@@ -3,7 +3,7 @@ github地址：https://github.com/mattzheng/Agriculture_KnowledgeGraph
 github开源中的PPT也是极好的，可以帮助了解关键核心以及大致框架，感谢作者的开源。
 
 整个知识图谱的结构图：
-
+![此处输入图片的描述](https://github.com/mattzheng/Agriculture_KnowledgeGraph/blob/master/matt/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1-V1.0.bmp)
 笔者比较关注'实体词识别-知识获取-关系抽取-关系归纳'，这个过程之中。其中的知识获取相当于无监督的关系抽取过程，而关系抽取的PCNNs是在知识获取的基础上的无监督一个步骤。
 以上的两个都是归纳'实体-实体'之间的关联，关系归纳，则是归纳'实体-类别'之间的联系。
 图数据库存储基本上来看，都会放在图数据库之中，导入csv的规范可见如下。
