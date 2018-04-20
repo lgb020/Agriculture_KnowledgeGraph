@@ -43,12 +43,29 @@ github开源中的PPT也是极好的，可以帮助了解关键核心以及大�
     中心检测，籽粒粗蛋白9.83%，糙米率82.5%，精米率74.3%，整精米率38%，胶稠度99mm，碱消值6，长宽比2.0。建议在河北省秦皇岛、
     唐山市稻区作糯性专用品种种植。","",""
 
+neo4j的创建语句为：
+
+    // 将hudong_pedia.csv 导入
+    LOAD CSV WITH HEADERS  FROM "file:///hudong_pedia.csv" AS line  
+    CREATE (p:HudongItem{title:line.title,image:line.image,detail:line.detail,url:line.url,openTypeList:line.openTypeList,baseInfoKeyList:line.baseInfoKeyList,baseInfoValueList:line.baseInfoValueList})  
+
 词条名称title、词条互动百科URL，词条代表图片image，词条类型openTypeList,词条解释detail，还有两个："baseInfoKeyList","baseInfoValueList"
 
 **导入新节点new_node.csv**
 title,lable
 药物治疗,newNode
 新实体词名称title，新实体词标签label
+
+neo4j的查询语句为：
+
+    // 导入新的节点
+    LOAD CSV WITH HEADERS FROM "file:///new_node.csv" AS line
+    CREATE (:NewNode { title: line.title })
+    
+    //添加索引
+    CREATE CONSTRAINT ON (c:NewNode)
+    ASSERT c.title IS UNIQUE
+
 
 **wikidata_relation2.csv  hudongItem和新加入节点之间的关系**
 
