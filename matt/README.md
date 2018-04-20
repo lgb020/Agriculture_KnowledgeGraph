@@ -34,6 +34,36 @@ github开源中的PPT也是极好的，可以帮助了解关键核心以及大�
 
 
 ## 一、图数据库
+
+总结一下一般可以定位为以下三个表格形式：节点表（节点 + 节点属性）、节点关系/属性表
+
+ - 节点表（节点 + 节点属性）
+
+node | attr  
+- | :-: 
+节点1 | 节点属性
+
+可以用neo4j：
+
+    LOAD CSV WITH HEADERS  FROM "file:///node.csv" AS line  
+    CREATE (p:nodeItem{title:line.node,image:line.attr})  
+
+ - 节点关系表
+
+node1 | relation | node2
+- | :-: | -: 
+节点1 | 关系/属性 | 节点2 
+
+可以用neo4j：
+
+    LOAD CSV WITH HEADERS FROM "file:///attributes.csv" AS line
+    MATCH (entity1:nodeItem{title:line.node1}), (entity2:nodeItem{title:line.node2})
+    CREATE (entity1)-[:RELATION { type: line.relation }]->(node2);
+
+
+----------
+
+
 ### 1.1 数据结构
 **实体词解释库：hudong_pedia.csv + hudong_pedia2.csv**
 
