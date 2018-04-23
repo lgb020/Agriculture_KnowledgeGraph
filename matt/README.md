@@ -245,3 +245,21 @@ Agriculture_KnowledgeGraph-master/wikidataSpider/wikiextractor/extracted/zh_wiki
 解决：
 
     sudo python3 manage.py migrate
+
+## 延伸二：KG的经验之谈（20180423更新）
+
+- 保证节点的唯一性
+
+    犯错：在book_excel，书名信息是不唯一的，可能一本书既可能被归类到 旅游、哲学、编程、创业
+    
+- 尝试心得：
+    
+    （1）从效果来看，如果关系类型比较少，比较适合直接用多表合一的方式进行查询；
+    
+    知识图谱中的图数据库的查询，建立在关系错综复杂、才有查询必要。
+    
+    （2）图数据库，一定要对节点 + 关系去重
+    
+- 时间消耗：
+    
+    3W节点 - 25.7W关系 - 3h时间 - 1002MB - 128GB内存/25机器
